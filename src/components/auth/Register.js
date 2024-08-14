@@ -1,21 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
-const Register = (props) => {
+const Register = () => {
   const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { register, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push('/');
+      navigate('/');
     }
 
     if (error === 'User already exists') {
       clearErrors();
     }
     // eslint-disable-next-line
-  }, [error, isAuthenticated, props.history]);
+  }, [error, isAuthenticated, navigate]);
 
   const [user, setUser] = useState({
     name: '',

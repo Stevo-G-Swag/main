@@ -2,7 +2,6 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
-import setAuthToken from '../../utils/setAuthToken';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -30,7 +29,9 @@ const AuthState = props => {
   // Load User
   const loadUser = async () => {
     if (localStorage.token) {
-      setAuthToken(localStorage.token);
+      axios.defaults.headers.common['x-auth-token'] = localStorage.token;
+    } else {
+      delete axios.defaults.headers.common['x-auth-token'];
     }
 
     try {
@@ -127,7 +128,10 @@ const AuthState = props => {
   };
 
   // Logout
-  const logout = () => dispatch({ type: LOGOUT });
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+    delete axios.defaults.headers.common['x-auth-token'];
+  };
 
   // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });

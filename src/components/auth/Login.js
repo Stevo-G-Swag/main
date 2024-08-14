@@ -1,21 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
-const Login = props => {
+const Login = () => {
   const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { login, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push('/');
+      navigate('/');
     }
 
     if (error === 'Invalid Credentials') {
       clearErrors();
     }
     // eslint-disable-next-line
-  }, [error, isAuthenticated, props.history]);
+  }, [error, isAuthenticated, navigate]);
 
   const [user, setUser] = useState({
     email: '',

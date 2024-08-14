@@ -17,7 +17,13 @@ const Calibrate = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    updateCalibration(calibrationData);
+    try {
+      updateCalibration(calibrationData);
+      console.log('Calibration data updated successfully');
+    } catch (error) {
+      console.error('Error updating calibration data:', error.message);
+      console.error(error.stack);
+    }
   };
 
   return (

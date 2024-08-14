@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const onLogout = () => {
     logout();
+    console.log('User logged out');
   };
 
   const authLinks = (
