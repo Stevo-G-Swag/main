@@ -1,4 +1,4 @@
-import {
+       import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
@@ -7,8 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
-  CALIBRATION_UPDATE_SUCCESS,
-  CALIBRATION_UPDATE_FAIL
+  CALIBRATION_UPDATE_SUCCESS
 } from '../types';
 
 export default (state, action) => {

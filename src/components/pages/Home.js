@@ -1,5 +1,6 @@
-import React, { Fragment, useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
+import ThoughtToCode from '../ThoughtToCode';
 
 const Home = () => {
   const authContext = useContext(AuthContext);
@@ -10,10 +11,10 @@ const Home = () => {
   }, []);
 
   return (
-    <Fragment>
-      <h1>Dashboard</h1>
-      <p>Welcome to NeuralDev!</p>
-    </Fragment>
+    <>
+      <h1>Welcome to NeuralDev</h1>
+      <ThoughtToCode />
+    </>
   );
 };
 
