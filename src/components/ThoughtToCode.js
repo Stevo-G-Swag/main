@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../context/auth/authContext';
+import { AuthContext } from '../context/auth/authContext'; // Use named import
 import mockAIService from '../utils/mockAIService';
 import CodeEditor from './CodeEditor';
 import io from 'socket.io-client';
